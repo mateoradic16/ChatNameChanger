@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ChatNameChanger
 {
-    class configuration : IRocketPluginConfiguration
+    public class configuration : IRocketPluginConfiguration
     {
         public bool Enabled;
         public bool Announce_Name_Change;

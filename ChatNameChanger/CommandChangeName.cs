@@ -83,9 +83,9 @@ namespace ChatNameChanger
                             UnturnedChat.Say(caller, main.Instance.Translate("changed_name_priv", command[0]), Color.yellow);
                             if (main.Instance.Configuration.Instance.Announce_Name_Change)
                             {
-                                UnturnedChat.Say(main.Instance.Translate("changed_name", player.CharacterName, command[0]), Color.yellow);
+                                UnturnedChat.Say(main.Instance.Translate("changed_name_pub", player.CharacterName, command[0]), Color.yellow);
                             }
-                            player.SteamPlayer().playerID.characterName = command[0];
+                            player.SteamPlayer().playerID.nickName = command[0];
                         }
                     }
                 }
@@ -94,14 +94,14 @@ namespace ChatNameChanger
                     if (caller.HasPermission("changename.other"))
                     {
                         UnturnedPlayer p = UnturnedPlayer.FromName(command[0]);
-                        UnturnedChat.Say(caller, main.Instance.Translate("changed_name_other_priv1", p.CharacterName, command[1]), Color.yellow);
-                        UnturnedChat.Say(caller, main.Instance.Translate("changed_name_other_priv2", command[1], player.CharacterName), Color.yellow);
+                        UnturnedChat.Say(player, main.Instance.Translate("changed_name_other_priv1", p.CharacterName, command[1]), Color.yellow);
+                        UnturnedChat.Say(p, main.Instance.Translate("changed_name_other_priv2", command[1], player.CharacterName), Color.yellow);
                         if (main.Instance.Configuration.Instance.Announce_Name_Change)
                         {
                             UnturnedChat.Say(main.Instance.Translate("changed_name_other", player.CharacterName, p.CharacterName, command[1]), Color.yellow);
                         }
 
-                        p.SteamPlayer().playerID.characterName = command[1];
+                        p.SteamPlayer().playerID.nickName = command[1];
                     }
                     else
                     {
